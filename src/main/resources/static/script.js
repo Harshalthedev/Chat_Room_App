@@ -31,13 +31,14 @@ function connect() {
 }
 
 function showMessage(message) {
+    // Removed inline color styling
     $("#message-container-table").append(
-        `<tr><td style="color: #FFD700;"><b>${message.name} :</b> ${message.content}</td></tr>`
+        `<tr><td><b>${message.name} :</b> ${message.content}</td></tr>`
     );
 
-    // Scroll to the bottom to ensure the latest message is visible
-    var messageContainer = $("#message-container-table").parent();
-    messageContainer.scrollTop(messageContainer[0].scrollHeight);
+    // Scroll directly to the bottom of the table container for smooth message flow
+    var messageContainer = $("#message-container-table").closest('.table-responsive');
+    messageContainer.scrollTop(messageContainer.prop("scrollHeight"));
 }
 
 $(document).ready((e) => {
@@ -45,7 +46,7 @@ $(document).ready((e) => {
         let name = $("#name-value").val();
         if (name.trim() !== "") {  // Check if the input is not empty
             localStorage.setItem("name", name);
-            $("#name-title").html(`Welcome , <b>${name}</b>`);
+            $("#name-title").html(`Welcome, <b>${name}</b>`);
             connect();
         }
     }
@@ -65,6 +66,7 @@ $(document).ready((e) => {
         sendMessage();
     });
 
+    // Send message when Enter key is pressed in the message input field
     $("#message-value").keydown((e) => {
         if (e.key === "Enter" || e.keyCode === 13) {
             sendMessage();
@@ -78,7 +80,7 @@ $(document).ready((e) => {
 
             $("#name-from").removeClass('d-none');
             $("#chat-room").addClass('d-none');
-            console.log(stompClient);
+            console.log("Disconnected:", stompClient);
         }
     });
 });

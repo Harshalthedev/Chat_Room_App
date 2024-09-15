@@ -2,10 +2,8 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport"
-          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-
     <title>Chat Room</title>
 
     <link href="/webjars/bootstrap/css/bootstrap.min.css" rel="stylesheet"/>
@@ -15,50 +13,56 @@
     <script src="/webjars/sockjs-client/sockjs.min.js"></script>
     <script src="/webjars/stomp-websocket/stomp.min.js"></script>
     <script src="/script.js"></script>
-
 </head>
-<body class="bg-dark">
+<body class="bg-light">
 
-<div id="name-from" class="bg-primary d-flex align-items-center">
-    <div class="container-fluid">
-        <div class="row">
-            <div class="col-md-4 offset-md-4">
-                <div class="input-group">
-                    <input type="text"
-                           placeholder="Enter your name"
-                           id="name-value"
-                           autofocus
-                           class="form-control">
-                    <div class="input-group-append">
-                        <button class="btn btn-dark" id="login">Enter</button>
+<!-- Header Section -->
+<header class="text-center bg-primary text-white p-3">
+    <h1>Chat Room</h1>
+</header>
+
+<!-- Main content wrapper -->
+<div class="content-wrapper">
+    <div id="name-from" class="d-flex align-items-center justify-content-center vh-100 bg-gradient-primary">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6 offset-md-3">
+                    <div class="input-group shadow-lg">
+                        <input type="text"
+                               placeholder="Enter your name"
+                               id="name-value"
+                               autofocus
+                               class="form-control">
+                        <div class="input-group-append">
+                            <button class="btn btn-primary" id="login">Enter</button>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-</div>
 
-<div id="chat-room" class="d-none">
-    <div class="container-fluid">
-        <div class="row">
-            <div class="col-md-6 offset-md-3">
-                <div class="card mt-3">
-                    <div class="card-header d-flex justify-content-between align-items-center">
-                        <h3 id="name-title"></h3>
-                        <button class="btn btn-dark" id="logout">Logout</button>
-                    </div>
-                    <div class="card-body d-flex flex-column">
-                        <div class="table-responsive flex-grow-1">
-                            <table id="message-container-table" class="table mb-0"></table>
+    <div id="chat-room" class="d-none">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6 offset-md-3">
+                    <div class="card mt-4 shadow-lg">
+                        <div class="card-header d-flex justify-content-between align-items-center">
+                            <h3 id="name-title"></h3>
+                            <button class="btn btn-danger" id="logout">Logout</button>
                         </div>
-                        <div class="input-group mt-3">
-                            <input type="text"
-                                   placeholder="Enter your message"
-                                   id="message-value"
-                                   autofocus
-                                   class="form-control">
-                            <div class="input-group-append">
-                                <button class="btn btn-dark" id="send-btn">Send</button>
+                        <div class="card-body d-flex flex-column">
+                            <div class="table-responsive" style="max-height: 400px; overflow-y: auto;">
+                                <table id="message-container-table" class="table table-hover"></table>
+                            </div>
+                            <div class="input-group mt-3">
+                                <input type="text"
+                                       placeholder="Enter your message"
+                                       id="message-value"
+                                       class="form-control">
+                                <div class="input-group-append">
+                                    <button class="btn btn-primary" id="send-btn">Send</button>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -67,6 +71,37 @@
         </div>
     </div>
 </div>
+
+<!-- Footer Section -->
+<footer class="bg-primary text-white text-center p-3 mt-3">
+    <div class="container">
+        <div class="row">
+            <!-- About Section -->
+            <div class="col-md-4">
+                <h5>About Chat Room</h5>
+                <p>A simple chat room to connect and chat with friends in real-time.</p>
+            </div>
+
+            <div class="col-md-4">       
+                <p class="mb-0">Chat Room &copy; 2024. All Rights Reserved.</p>
+                <p>Developed By Harshal</p>
+            </div>
+
+            <!-- Social Media Icons -->
+            <div class="col-md-4">
+                <h5>Follow Us</h5>
+                <div>
+                    <a href="#" class="text-white mr-3">
+                        <img src="/path_to_instagram_icon.png" alt="Instagram" width="24">
+                    </a>
+                    <a href="#" class="text-white">
+                        <img src="/path_to_linkedin_icon.png" alt="LinkedIn" width="24">
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
 
 </body>
 </html>
